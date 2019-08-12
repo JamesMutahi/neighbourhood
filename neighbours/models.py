@@ -28,3 +28,7 @@ class Business(models.Model):
         return self.owner.user.email
 
 
+class Post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    Text = models.TextField()
+    neighbourhood = models.ForeignKey(Neighbourhood, related_name='posts')
