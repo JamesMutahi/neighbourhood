@@ -15,19 +15,20 @@
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="navbar-nav mt-2 mt-lg-0 nav-font justify-content-end w-100">
 				<li class="nav-item">
+					{% if user.is_authenticated %}
 					<div class="dropdown">
-						<button onclick="myFunction()" class="dropbtn btn btn-lg px-3 bg-transparent d-flex nav-font"> {{ user.username }} <img class="rounded-circle nav-account-img" src="{{ user.profile.image.url }}"></button>
+						<button onclick="myFunction()" class="dropbtn btn btn-lg px-3 bg-transparent d-flex nav-font"> {{
+							user.username }} <img class="rounded-circle nav-account-img" src="{{ user.profile.image.url }}"></button>
 						<div id="myDropdown" class="dropdown-content animated fadeInRight">
 							<div class="">
-								{% if user.is_authenticated %}
 								<a class="nav-item nav-link hvr-forward" href="{% url 'profile' %}">Profile</a>
 								<a class="nav-item nav-link hvr-forward" href="{% url 'logout' %}">Logout</a>
-								{% else %}
-								<a class="nav-item nav-link hvr-forward" href="{% url 'login' %}">Login</a>
-								<a class="nav-item nav-link hvr-forward" href="{% url 'register' %}">Register</a>
-								{% endif %}
 							</div>
 						</div>
+						{% else %}
+						<a class="nav-item nav-link hvr-forward" href="{% url 'login' %}">Login</a>
+						<a class="nav-item nav-link hvr-forward" href="{% url 'register' %}">Register</a>
+						{% endif %}
 					</div>
 				</li>
 			</ul>
