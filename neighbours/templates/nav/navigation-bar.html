@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom bg-transparent p-0">
+	<div class="container">
+		<button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+		        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<nav class="navbar navbar-light">
+			<a class="navbar-brand hvr-grow" href="{% url 'main-home' %}">
+				<img src="{% static 'img/directions.jpg' %}" width="30" height="30" class="rounded-circle"
+				     alt="">
+				<span>Neighbourhood</span>
+			</a>
+		</nav>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+			<ul class="navbar-nav mt-2 mt-lg-0 nav-font justify-content-end w-100">
+				<li class="nav-item">
+					<div class="dropdown">
+						<button onclick="myFunction()" class="dropbtn btn btn-lg px-3 bg-transparent d-flex nav-font"> {{ user.username }} <img class="rounded-circle nav-account-img" src="{{ user.profile.image.url }}"></button>
+						<div id="myDropdown" class="dropdown-content animated fadeInRight">
+							<div class="">
+								{% if user.is_authenticated %}
+								<a class="nav-item nav-link hvr-forward" href="{% url 'profile' %}">Profile</a>
+								<a class="nav-item nav-link hvr-forward" href="{% url 'logout' %}">Logout</a>
+								{% else %}
+								<a class="nav-item nav-link hvr-forward" href="{% url 'login' %}">Login</a>
+								<a class="nav-item nav-link hvr-forward" href="{% url 'register' %}">Register</a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
