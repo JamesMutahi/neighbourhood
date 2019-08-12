@@ -16,3 +16,15 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return self.Name
 
+class Business(models.Model):
+    Name = models.TextField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    show_my_email = models.BooleanField(default=True)
+    description = models.TextField(default='Local business')
+    neighbourhood = models.ForeignKey(Neighbourhood, related_name='biashara')
+
+    @property
+    def email(self):
+        return self.owner.user.email
+
+
