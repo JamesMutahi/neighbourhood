@@ -6,6 +6,11 @@ def home(request):
 
 
 @login_required
+def neighbourhoods(request):
+    hoods = Neighbourhood.objects.all()
+    return render(request, 'neighbourhoods.html', locals())
+
+@login_required
 def join_neighbourhood(request, neigh_id):
     hood = get_object_or_404(Neighbourhood, pk=neigh_id)
     request.user.profile.neighbourhood = hood
@@ -29,7 +34,7 @@ def delete_neighbourhood(request, neigh_id):
         member.neighbourhood = None
         member.save()
     request.user.profile.hoods.filter(pk=neigh_id).delete()
-    return redirect(myprofile)
+    return redirect(neighbourhoods)
 
 
 @login_required
