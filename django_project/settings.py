@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # production
 # else:
 DATABASES = {
-   'default': dj_database_url.config(
+    'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 }
