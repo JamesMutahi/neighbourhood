@@ -1,0 +1,94 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{%if title%}
+	<title>{{title}}</title>
+	{% endif %}
+	<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	{% block styles %}
+	{% bootstrap_css %}
+	{% endblock %}
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/corey.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+<!--CSS Spinner-->
+<div class="spinner-wrapper">
+	<div class="spinner"></div>
+</div>
+{% include "nav/navigation-bar.html" %}
+
+<div class="text-center">
+	<div class="menu">
+		<span class="menu-circle"></span>
+		<a href="#" class="menu-link">
+      <span class="menu-icon">
+        <span class="menu-line menu-line-1"></span>
+        <span class="menu-line menu-line-2"></span>
+        <span class="menu-line menu-line-3"></span>
+      </span>
+		</a>
+	</div>
+</div>
+<div class="menu-overlay text-center">
+	<div style="height: 100vh;">
+		<div class="col-md-12 d-flex justify-content-center mt-5">
+			<div class="flex-center flex-column">
+				<ul class="navbar-nav">
+					<li class="real-home active text-center mt-5">
+						<span class="nav-link" style="font-size: 34px;">NAVIGATE</span>
+						<hr style="width: 80px;">
+					</li>
+					<li class="home nav-item">
+						<a href="#" class="nav-link home-icon hvr-underline-from-left">Home</a>
+					</li>
+					<li class="gall nav-item">
+						<a href="#" class="nav-link gallery-icon hvr-underline-from-left ">Hood</a>
+					</li>
+					<li class="featured nav-item">
+						<a href="#" class="nav-link featured-icon hvr-underline-from-left ">Profile</a>
+					</li>
+					<li class="log nav-item mt-3">
+						<a href="#" class="nav-link hvr-underline-from-left log">Log Out</a>
+					</li>
+					<li class="mt-5 socials">
+						<a><i class="fab fa-instagram fa-sm m-2"></i></a>
+						<a><i class="fab fa-facebook-square fa-sm m-2"></i></a>
+						<a><i class="fab fa-twitter-square fa-sm m-2"></i></a>
+						<a><i class="fab fa-linkedin fa-sm m-2"></i></a>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+<!--	block content -->
+{% block content %} {%endblock%}
+<!--	end of block content-->
+</div>
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+{% bootstrap_javascript %}
+{% endblock %}
+<script>
+      feather.replace()
+
+
+
+
+</script>
+</body>
+</html>
